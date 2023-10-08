@@ -1,17 +1,14 @@
 #include <stdio.h>
 int main(){
-    int T[50];
-    int N;
+    int N, SomDiv=0;
     do{
-        printf("Donner La taille du tableau comprise entre 1 et 50: ");
+        printf("Donner le Nombre N: ");
         scanf("%d",&N);
-    }while(N<1 || N>50);
-    for (int i =0;i<N;i++){
-        printf("\nDonner T[%d] = ",i);
-        scanf("%d",&T[i]);
+        printf("\n");
+    }while(N<2);
+    for(int i=1;i<N;i++){
+        if(N % i == 0) SomDiv = SomDiv + i;
     }
-    printf("T = {");
-    for (int i=0;i<N-1;i++) printf("%d,",T[i]);
-    printf("%d}",T[N-1]);
-    return 0;
+    if(SomDiv == N) printf("C'est un nombre parfait");
+    else printf("Ce n'est pas un nombre parfait");
 }

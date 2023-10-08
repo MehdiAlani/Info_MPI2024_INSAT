@@ -1,13 +1,18 @@
 #include <stdio.h>
 int main(){
-    float Tgr1[]={5.4,8.5,9.15,9.95,10.05,10.50,11.4,12.50,13.4,13.5,14.5,14.98,15.5};
-    int N= sizeof(Tgr1)/sizeof(float); 
-    float Tgr2[]={4,4.8,5.6,9.6,9.8,10.11,10.7,11.5,12.01,12.9,13.5,13.6,14.8};
-    int M= sizeof(Tgr2)/sizeof(float);
-    for (int i =0; i<M;i++){
-        TAmphi=Tgr1[i]
+    int U1=1,U2=1,N,aux;
+    do{
+        printf("Donner le Nombre N: ");
+        scanf("%d",&N);
+        printf("\n");
+    }while(N<0);
+
+    for(int i =0 ; i < N;i++){
+        aux = U2;
+        U2 = U1 + U2;
+        U1 = aux;
     }
-    float TAmphi[]= Tgr1 + Tgr2 ;
-    printf("%d",sizeof(Tgr2)/sizeof(float));
+    printf("le %dieme Terme de cette Suite U(%d) = %d",N,N,U1);
+
     return 0;
 }

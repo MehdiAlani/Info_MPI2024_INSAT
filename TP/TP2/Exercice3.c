@@ -1,34 +1,20 @@
 #include <stdio.h>
 int main(){
-    int N;
-    char Carctere;
+      int N,SomDiv,nbParfait=0;
     do{
-        printf("Donner La taille du tableau comprise entre 1 et 50: ");
+        printf("Donner le Nombre N: ");
         scanf("%d",&N);
-    }while(N<1 || N>50);
-    char Tchar[N];
-    printf("\n");
-    for(int i =0;i<N;i++){
-        do{
-            printf("Tchar[%d]= ",i);
-            scanf("%c",&Carctere);
-            printf("\n");
-        }while('A'> Carctere || 'z'< Carctere );
-        Tchar[i]=Carctere;
-    }
-    printf("\nTchar={");
-    for(int i =0; i < N-1;i++){
-        printf("%c,",Tchar[i]);
-    }
-    printf("%c}\n",Tchar[N-1]);
-    printf("Saisir un chartere a chercher: \n");
-    scanf("%c",&Carctere);
-    for (int i=0; i<N;i++){
-        if (Tchar[i]==Carctere){
-            printf("Le caractere %c exciste dans le tableau Tchar\n",Carctere);
-            return 0;
+        printf("\n");
+    }while(N < 1);
+    for(int i =2; i<=N;i++){
+        SomDiv=0;
+        for(int j =1; j<i; j++){
+            if(i%j==0) SomDiv=SomDiv+j;
         }
+        if(SomDiv == i) nbParfait++;
     }
-    printf("Le caractere %c n'exciste pas dans le tableau Tchar\n",Carctere);
+    printf("On a %d Nombres parfaits inferieur a %d",nbParfait,N);
     return 0;
 }
+
+
