@@ -1,43 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(){
-    int N,aux;
-    int nb,i,Somme=0,max=0,min=0,max_nb=0,min_nb=-1;
+    int * P1 , * P2 , AIDE , n;
+    srand(time(0));
     do{
-        printf("Donner un nombre positive de max 50: ");
-        scanf("%d",&N);
-    }while(N < 1 || N > 50);
-    int Tab[N];
-    for(i = 0; i < N; i++) {
-        printf("Donner Tab[%d]:",i);
-        scanf("%d",&nb);
-        Tab[i] = nb;
+        printf("Donner la Taille du Tableau : ");
+        scanf("%d",&n);
+    }while(n < 1);
+
+    int * A = (int *) malloc(sizeof(int) * n);
+    for(P1 = A; P1 < A + n; P1++) {
+        *P1 = rand() % 10;
+        printf("%d ",*P1);
     }
-    printf("Tab = {");
-    max_nb = Tab[0];
-    min_nb = Tab[0];
-    for(i = 0; i < N; i++){
-        printf("%d,",Tab[i]);
-        Somme = Somme + Tab[i];
-        if(max_nb < Tab[i]){
-            max_nb = Tab[i];
-            max = i;
-        }
-        else if (min_nb > Tab[i]){
-            min_nb = Tab[i];
-            min = i;
-        }
+    printf("\n");
+    for(P1 = A, P2 = A + n - 1; P1 < A + n / 2; P1++,P2--){
+        AIDE = *P1;
+        *P1 = *P2;
+        *P2 = AIDE;
     }
-    printf("}");
-    printf("\n La Somme de Tab est %d , de position max %d, de position min %d\n",Somme,max,min);
-    for( i=0 ; i < N / 2 ; i++){
-        aux = Tab[i];
-        Tab[i] = Tab[N-1-i];
-        Tab[N-1-i] = aux ;
-    }
-    printf("Le tableau Inverse est :{");
-    for( i=0 ; i < N ; i++){
-        printf("%d,",Tab[i]);
-    }
-    printf("}\n");
+
+    for(P1 = A; P1 < A + n; P1++) printf("%d ",*P1);
+    return 0;
 }

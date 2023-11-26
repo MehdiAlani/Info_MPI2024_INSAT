@@ -2,11 +2,16 @@
 
 
 int main(){
-    char c1,c2;
-    printf("Donner le premier caractere: ");
-    scanf("%c",&c1);
-    printf("\nDonner le deusieme caractere: ");
-    scanf(" %c",&c2);
-    printf("\nLe code ASCII du premier caractere est %d et de deusieme est %d",(int)c1,(int)c2);
+    int N,Somme=0;
+    do{
+        printf("Donner le Nombre N: ");
+        scanf("%d",&N);
+        printf("\n");
+    }while(N<1);
+    while(N != 0){
+        Somme = Somme + N % 10; 
+        N = N / 10;
+    }
+    printf("La Somme des chiffres de %d est (S = %d)",N,Somme);
     return 0;
 }

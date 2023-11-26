@@ -1,15 +1,14 @@
 #include <stdio.h>
-
-
 int main(){
-    int a,b;
-
-    printf("Donner le nombre a: ");
-    scanf("%d",&a);
-    printf("\nDonner le nombre b: ");
-    scanf("%d",&b);
-
-    
-    printf("\nLe quotien de cette division est %d et de reste %d",a/b,a%b);
-    return 0;
+    int N, SomDiv=0;
+    do{
+        printf("Donner le Nombre N: ");
+        scanf("%d",&N);
+        printf("\n");
+    }while(N<2);
+    for(int i=1;i<N;i++){
+        if(N % i == 0) SomDiv = SomDiv + i;
+    }
+    if(SomDiv == N) printf("C'est un nombre parfait");
+    else printf("Ce n'est pas un nombre parfait");
 }

@@ -1,28 +1,36 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-    int N , i=0;
-    char c;
+    int * PA , * PB;
+    int N , M,i=0;
     do{
-        printf("Donner le taille de Tableau: ");
+        printf("Donner M: ");
+        scanf("%d",&M);
+        printf("Donner N: ");
         scanf("%d",&N);
-    }while(N < 1);
-    char Tchar[N];
-    for(i=0; i < N ; i++){
-        fflush(stdin);
-        printf("Donner Tchar[%d]:",i);
-        scanf("%c",&c);
-        Tchar[i] = c;
+    }while(M < 0 && N < 0);
+    
+    int * A = (int *) malloc(sizeof(int) * N);
+    int * B = (int *) malloc(sizeof(int) * M); 
+    for(PA = A ; PA < A + N ; PA++){
+        printf("Donner A[%d]=",i);
+        scanf("%d",PA);
+        i++;
     }
-    fflush(stdin);
-    printf("Donner un caractere: ");
-    scanf("%c",&c);
-    for(i=0; i < N ; i++){
-        if(Tchar[i]==c){
-            printf("Le caractere %c exist\n");
-            return 1;
-        }
+    i=0;
+    for(PB = B ; PB < B + M ; PB++){
+        printf("Donner B[%d]=",i);
+        scanf("%d",PB);
+        i++;
     }
-    printf("Le caractere %c n'exist pas \n");
+
+    A = (int * ) realloc(A, (N + M) * sizeof(int));
+    for(PA = A; PA < A + N ; PA++) printf("%d ",*PA);
+    for(PA = A + N,PB = B; PA < A + N + M ; PA++,PB++){
+        *PA = *PB;
+        printf("%d ",*PA);
+    }
+    printf("\n");
     return 0;
 }

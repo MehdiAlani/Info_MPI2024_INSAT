@@ -1,14 +1,43 @@
 #include <stdio.h>
+
 int main(){
-    int N, SomDiv=0;
+    int N,aux;
+    int nb,i,Somme=0,max=0,min=0,max_nb=0,min_nb=-1;
     do{
-        printf("Donner le Nombre N: ");
+        printf("Donner un nombre positive de max 50: ");
         scanf("%d",&N);
-        printf("\n");
-    }while(N<2);
-    for(int i=1;i<N;i++){
-        if(N % i == 0) SomDiv = SomDiv + i;
+    }while(N < 1 || N > 50);
+    int Tab[N];
+    for(i = 0; i < N; i++) {
+        printf("Donner Tab[%d]:",i);
+        scanf("%d",&nb);
+        Tab[i] = nb;
     }
-    if(SomDiv == N) printf("C'est un nombre parfait");
-    else printf("Ce n'est pas un nombre parfait");
+    printf("Tab = {");
+    max_nb = Tab[0];
+    min_nb = Tab[0];
+    for(i = 0; i < N; i++){
+        printf("%d,",Tab[i]);
+        Somme = Somme + Tab[i];
+        if(max_nb < Tab[i]){
+            max_nb = Tab[i];
+            max = i;
+        }
+        else if (min_nb > Tab[i]){
+            min_nb = Tab[i];
+            min = i;
+        }
+    }
+    printf("}");
+    printf("\n La Somme de Tab est %d , de position max %d, de position min %d\n",Somme,max,min);
+    for( i=0 ; i < N / 2 ; i++){
+        aux = Tab[i];
+        Tab[i] = Tab[N-1-i];
+        Tab[N-1-i] = aux ;
+    }
+    printf("Le tableau Inverse est :{");
+    for( i=0 ; i < N ; i++){
+        printf("%d,",Tab[i]);
+    }
+    printf("}\n");
 }

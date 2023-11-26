@@ -1,20 +1,28 @@
 #include <stdio.h>
+
 int main(){
-      int N,SomDiv,nbParfait=0;
+    int N , i=0;
+    char c;
     do{
-        printf("Donner le Nombre N: ");
+        printf("Donner le taille de Tableau: ");
         scanf("%d",&N);
-        printf("\n");
     }while(N < 1);
-    for(int i =2; i<=N;i++){
-        SomDiv=0;
-        for(int j =1; j<i; j++){
-            if(i%j==0) SomDiv=SomDiv+j;
-        }
-        if(SomDiv == i) nbParfait++;
+    char Tchar[N];
+    for(i=0; i < N ; i++){
+        fflush(stdin);
+        printf("Donner Tchar[%d]:",i);
+        scanf("%c",&c);
+        Tchar[i] = c;
     }
-    printf("On a %d Nombres parfaits inferieur a %d",nbParfait,N);
+    fflush(stdin);
+    printf("Donner un caractere: ");
+    scanf("%c",&c);
+    for(i=0; i < N ; i++){
+        if(Tchar[i]==c){
+            printf("Le caractere %c exist\n");
+            return 1;
+        }
+    }
+    printf("Le caractere %c n'exist pas \n");
     return 0;
 }
-
-

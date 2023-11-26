@@ -1,28 +1,33 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
 int main(){
-    int nb, c;
-    printf("Donner un entier: ");
-    scanf("%d",&nb);
-    fflush(stdin);
-    printf("Donner Votre Operation : ");
-    scanf("%c",&c);
-    switch(c){
-        case '+':
-            printf("%d",nb+2);
-            break;
-        case '-':
-            printf("%d",nb-2);
-            break;
-        case '/':
-            printf("%d",nb/2);
-            break;
-        case '*':
-            printf("%d",nb*2);
-            break;
-        default:
-            printf("Operation pas supportee\n");
+    int X,n;
+    int  * p , * k;
+    int i;
+    printf("Donner X: ");
+    scanf("%d",&X);
+    do{
+        printf("Donner le Taille de Tableau : ");
+        scanf("%d",&n);
+    }while(n < 1);
+    int * A = (int * ) malloc(n * sizeof(int));
+    i = 0;
+    for( p = A ; p <  A + n ; p++){
+        printf("Donner A[%d]: ",i);
+        scanf("%d",p);
+        i++;
     }
+    for(p = A; p < A + n; p++){
+        if(*p == X){
+            for(k = p + 1 ; k < A + n; k++){
+                *(k - 1) = *k; 
+            }
+            n--;
+            realloc(A , n * sizeof(int));
+        }
+    }
+    for(p = A ; p < A + n;p++) printf("%d ",*p);
     return 0;
 }
