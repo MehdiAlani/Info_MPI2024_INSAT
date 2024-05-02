@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "Pile.C": "cpp",
+        "TryPile.C": "cpp",
+        "Try2Pile.C": "cpp",
+        "stdio.h": "c"
+    }
+}
